@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'Subscriptions'], function () {
+    Route::get('plans', 'PlanController@index')->name('subscriptions.plans');
+    Route::get('/subscriptions', 'SubscriptionController@index')->name('subscriptions');
+
+});
