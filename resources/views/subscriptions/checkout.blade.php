@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Checkout') }}</div>
 
                 <div class="card-body">
-                    <form action="">
+                    <form action="" method="POST">
                         <div class="form-group">
                             <label for="">Name on Card</label>
                             <input type="text" name="name" id="name" class="form-control">
@@ -17,6 +17,8 @@
                             <label for="">Card Details</label>
                             <div id="card-element"></div>
                         </div>
+
+                        <button type="submit" class="btn btn-primary" id="card-button">Pay</button>
                     </form>
                 </div>
             </div>
