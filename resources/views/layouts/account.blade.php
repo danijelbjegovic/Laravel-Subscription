@@ -18,6 +18,12 @@
                         <a class="nav-link" href="{{ route('account.subscriptions.cancel') }}">Cancel Subscription</a>
                     </li>
                 @endif
+
+                @if(auth()->user()->subscribed() && auth()->user()->subscription('default')->cancelled())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('account.subscriptions.resume') }}">Resume Subscription</a>
+                    </li>
+                @endif
             </ul>
         </div>
 
