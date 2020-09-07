@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        return view('account.subscriptions');
+        return view('account.subscriptions.index');
     }
 }

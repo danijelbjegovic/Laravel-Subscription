@@ -11,8 +11,13 @@
             </ul>
             <ul class="nav flex-column mb-4">
                 <li class="nav-item">
-                <a class="nav-link" href="{{ route('account.subscriptions') }}">Subscription</a>
+                    <a class="nav-link" href="{{ route('account.subscriptions') }}">Subscription</a>
                 </li>
+                @if(auth()->user()->subscribed() && !auth()->user()->subscription('default')->cancelled())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('account.subscriptions.cancel') }}">Cancel Subscription</a>
+                    </li>
+                @endif
             </ul>
         </div>
 
