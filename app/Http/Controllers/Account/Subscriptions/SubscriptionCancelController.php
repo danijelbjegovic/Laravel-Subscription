@@ -19,6 +19,9 @@ class SubscriptionCancelController extends Controller
     public function store(Request $request)
     {
         $subscription = $request->user()->subscription('default');
+
+        $this->authorize('cancel', $subscription);
+
         $subscription->cancel();
 
         return redirect()->route('account.subscriptions');

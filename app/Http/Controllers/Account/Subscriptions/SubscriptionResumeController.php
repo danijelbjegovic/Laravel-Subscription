@@ -18,6 +18,9 @@ class SubscriptionResumeController extends Controller
     public function store(Request $request)
     {
         $subscription = $request->user()->subscription('default');
+
+        $this->authorize('resume', $subscription);
+
         $subscription->resume();
 
         return redirect()->route('account.subscriptions');
