@@ -23,14 +23,16 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'token' => 'required',
-            'plan' => 'required|exists:plans,slug'
+            'token'     => 'required',
+            'coupon'    => 'nullable',
+            'plan'      => 'required|exists:plans,slug'
         ]);
 
         $plan = Plan::where('slug', $request->get('plan', 'monthly'))
                     ->first();
 
         $request->user()->newSubscription('default', $plan->stripe_id)
+                ->withCoupon($request->coupon)
                 ->create($request->token);
 
         return back();

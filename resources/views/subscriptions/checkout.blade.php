@@ -10,6 +10,12 @@
                 <div class="card-body">
                     <x:card-form :action="route('subscriptions.store')">
                         <input type="hidden" name="plan" value="{{ request('plan')}}">
+
+                        <div class="form-group">
+                            <label for="coupon">Coupon</label>
+                            <input type="text" name="coupon" id="coupon" class="form-control">
+                        </div>
+
                         <button
                             type="submit"
                             class="btn btn-primary"
